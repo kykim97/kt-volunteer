@@ -15,11 +15,11 @@ public class VolunteerInfoEntered extends AbstractEvent {
     private String name;
     private Date birth;
     private String tel;
-    private Email email;
-    private Photo profileImg;
+    private String email;
+    private String profileImg;
     private String interest;
     private Date time;
-    private Address location;
+    private String location;
 
     public VolunteerInfoEntered(VolunteerInfo aggregate) {
         super(aggregate);

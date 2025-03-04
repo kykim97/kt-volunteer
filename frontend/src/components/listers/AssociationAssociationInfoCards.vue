@@ -102,7 +102,7 @@
             
             me.newValue = {
                 'associationId': 0,
-                'address': {},
+                'address': '',
                 'tel': '',
                 'bizNumber': 0,
                 'email': '',

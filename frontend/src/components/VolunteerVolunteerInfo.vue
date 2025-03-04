@@ -20,11 +20,11 @@
             <String label="이름" v-model="value.name" :editMode="editMode" :inputUI="''"/>
             <Date label="생년월일" v-model="value.birth" :editMode="editMode" :inputUI="''"/>
             <String label="전화번호" v-model="value.tel" :editMode="editMode" :inputUI="''"/>
-            <Email offline label="이메일" v-model="value.email" :editMode="editMode" @change="change"/>
-            <Photo offline label="프로필사진" v-model="value.profileImg" :editMode="editMode" @change="change"/>
+            <String label="이메일" v-model="value.email" :editMode="editMode" :inputUI="''"/>
+            <String label="프로필사진" v-model="value.profileImg" :editMode="editMode" :inputUI="''"/>
             <String label="관심분야" v-model="value.interest" :editMode="editMode" :inputUI="''"/>
             <Date label="가능시간" v-model="value.time" :editMode="editMode" :inputUI="''"/>
-            <Address offline label="지역정보" v-model="value.location" :editMode="editMode" @change="change"/>
+            <String label="지역정보" v-model="value.location" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">
@@ -85,16 +85,10 @@
 <script>
     const axios = require('axios').default;
 
-    import Email from './vo/Email.vue';
-    import Photo from './vo/Photo.vue';
-    import Address from './vo/Address.vue';
 
     export default {
         name: 'VolunteerVolunteerInfo',
         components:{
-            Email,
-            Photo,
-            Address,
         },
         props: {
             value: [Object, String, Number, Boolean, Array],

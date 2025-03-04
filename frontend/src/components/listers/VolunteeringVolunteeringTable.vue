@@ -85,7 +85,7 @@
 
             this.newValue = {
                 'volunteeringId': 0,
-                'place': {},
+                'place': '',
                 'schedule': '2025-03-04',
                 'title': '',
                 'category': '',

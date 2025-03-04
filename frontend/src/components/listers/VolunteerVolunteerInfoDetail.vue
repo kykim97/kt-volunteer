@@ -17,15 +17,21 @@
             <div>
                 <String label="Tel" v-model="item.tel" :editMode="editMode" @change="change" />
             </div>
-            <Email offline label="Email" v-model="item.email" :editMode="false" @change="change" />
-            <Photo offline label="ProfileImg" v-model="item.profileImg" :editMode="false" @change="change" />
+            <div>
+                <String label="Email" v-model="item.email" :editMode="editMode" @change="change" />
+            </div>
+            <div>
+                <String label="ProfileImg" v-model="item.profileImg" :editMode="editMode" @change="change" />
+            </div>
             <div>
                 <String label="Interest" v-model="item.interest" :editMode="editMode" @change="change" />
             </div>
             <div>
                 <Date label="Time" v-model="item.time" :editMode="editMode" @change="change" />
             </div>
-            <Address offline label="Location" v-model="item.location" :editMode="false" @change="change" />
+            <div>
+                <String label="Location" v-model="item.location" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

@@ -9,7 +9,7 @@ import lombok.Data;
 public class VolunteeringCompleted extends AbstractEvent {
 
     private Long volunteeringId;
-    private Address place;
+    private String place;
     private Date schedule;
     private String title;
     private String category;

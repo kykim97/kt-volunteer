@@ -33,8 +33,8 @@ public class Volunteering  {
     
     
     
-    @Embedded
-    private Address place;
+    
+    private String place;
     
     
     

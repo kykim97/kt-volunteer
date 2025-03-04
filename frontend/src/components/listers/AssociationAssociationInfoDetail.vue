@@ -8,7 +8,9 @@
             <div>
                 <Number label="AssociationId" v-model="item.associationId" :editMode="editMode" @change="change" />
             </div>
-            <Address offline label="Address" v-model="item.address" :editMode="false" @change="change" />
+            <div>
+                <String label="Address" v-model="item.address" :editMode="editMode" @change="change" />
+            </div>
             <div>
                 <String label="Tel" v-model="item.tel" :editMode="editMode" @change="change" />
             </div>

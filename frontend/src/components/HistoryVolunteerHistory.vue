@@ -17,7 +17,7 @@
 
         <v-card-text style="background-color: white;">
             <Number v-if="editMode" label="HistoryId" v-model="value.historyId" :editMode="editMode" :inputUI="''"/>
-            <Address offline label="위치" v-model="value.place" :editMode="editMode" @change="change"/>
+            <String label="위치" v-model="value.place" :editMode="editMode" :inputUI="''"/>
             <Date label="일정" v-model="value.schedule" :editMode="editMode" :inputUI="''"/>
             <String label="제목" v-model="value.title" :editMode="editMode" :inputUI="''"/>
             <String label="분야" v-model="value.category" :editMode="editMode" :inputUI="''"/>
@@ -83,12 +83,10 @@
 <script>
     const axios = require('axios').default;
 
-    import Address from './vo/Address.vue';
 
     export default {
         name: 'HistoryVolunteerHistory',
         components:{
-            Address,
         },
         props: {
             value: [Object, String, Number, Boolean, Array],

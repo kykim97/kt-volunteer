@@ -17,7 +17,7 @@
 
         <v-card-text style="background-color: white;">
             <Number v-if="editMode" label="AssociationId" v-model="value.associationId" :editMode="editMode" :inputUI="''"/>
-            <Address offline label="주소" v-model="value.address" :editMode="editMode" @change="change"/>
+            <String label="주소" v-model="value.address" :editMode="editMode" :inputUI="''"/>
             <String label="연락처" v-model="value.tel" :editMode="editMode" :inputUI="''"/>
             <Number label="사업자번호" v-model="value.bizNumber" :editMode="editMode" :inputUI="''"/>
             <String label="이메일" v-model="value.email" :editMode="editMode" :inputUI="''"/>
@@ -92,12 +92,10 @@
 <script>
     const axios = require('axios').default;
 
-    import Address from './vo/Address.vue';
 
     export default {
         name: 'AssociationAssociationInfo',
         components:{
-            Address,
         },
         props: {
             value: [Object, String, Number, Boolean, Array],

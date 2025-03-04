@@ -20,8 +20,7 @@ public class VolunteerHistory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long historyId;
 
-    @Embedded
-    private Address place;
+    private String place;
 
     private Date schedule;
 

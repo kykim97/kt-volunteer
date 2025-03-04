@@ -124,11 +124,11 @@
                 'name': '',
                 'birth': '2025-03-04',
                 'tel': '',
-                'email': {},
-                'profileImg': {},
+                'email': '',
+                'profileImg': '',
                 'interest': '',
                 'time': '2025-03-04',
-                'location': {},
+                'location': '',
             }
         },
         methods: {

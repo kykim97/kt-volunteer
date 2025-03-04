@@ -8,7 +8,9 @@
             <div>
                 <Number label="HistoryId" v-model="item.historyId" :editMode="editMode" @change="change" />
             </div>
-            <Address offline label="Place" v-model="item.place" :editMode="false" @change="change" />
+            <div>
+                <String label="Place" v-model="item.place" :editMode="editMode" @change="change" />
+            </div>
             <div>
                 <Date label="Schedule" v-model="item.schedule" :editMode="editMode" @change="change" />
             </div>

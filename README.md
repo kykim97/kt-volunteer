@@ -36,22 +36,22 @@ mvn spring-boot:run
 ## Test by API
 - volunteer
 ```
- http :8088/volunteerInfos userId="userId"name="name"birth="birth"tel="tel"interest="interest"time="time"
+ http :8088/volunteerInfos userId="userId"name="name"birth="birth"tel="tel"email="email"profileImg="profileImg"interest="interest"time="time"location="location"
 ```
 - volunteering
 ```
- http :8088/volunteerings volunteeringId="volunteeringId"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
+ http :8088/volunteerings volunteeringId="volunteeringId"place="place"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
 ```
 - association
 ```
- http :8088/associationInfos associationId="associationId"tel="tel"bizNumber="bizNumber"email="email"place="place"schedule="schedule"title="title"category="category"
+ http :8088/associationInfos associationId="associationId"address="address"tel="tel"bizNumber="bizNumber"email="email"place="place"schedule="schedule"title="title"category="category"
 ```
 - mypage
 ```
 ```
 - history
 ```
- http :8088/volunteerHistories historyId="historyId"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
+ http :8088/volunteerHistories historyId="historyId"place="place"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
 ```
 
 

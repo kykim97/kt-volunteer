@@ -7,7 +7,7 @@ import lombok.Data;
 public class AssociationInfo {
 
     private Long associationId;
-    private Object address;
+    private String address;
     private String tel;
     private Integer bizNumber;
     private String email;

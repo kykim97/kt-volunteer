@@ -26,18 +26,15 @@ public class VolunteerInfo {
 
     private String tel;
 
-    @Embedded
-    private Email email;
+    private String email;
 
-    @Embedded
-    private Photo profileImg;
+    private String profileImg;
 
     private String interest;
 
     private Date time;
 
-    @Embedded
-    private Address location;
+    private String location;
 
     @PostPersist
     public void onPostPersist() {

@@ -12,7 +12,7 @@ import lombok.*;
 public class VolunteeringApplied extends AbstractEvent {
 
     private Long volunteeringId;
-    private Address place;
+    private String place;
     private Date schedule;
     private String title;
     private String category;

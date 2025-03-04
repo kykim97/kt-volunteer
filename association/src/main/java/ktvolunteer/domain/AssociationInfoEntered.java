@@ -12,10 +12,10 @@ import lombok.*;
 public class AssociationInfoEntered extends AbstractEvent {
 
     private Long associationId;
-    private Address address;
+    private String address;
     private String tel;
     private Integer bizNumber;
-    private Email email;
+    private String email;
 
     public AssociationInfoEntered(AssociationInfo aggregate) {
         super(aggregate);

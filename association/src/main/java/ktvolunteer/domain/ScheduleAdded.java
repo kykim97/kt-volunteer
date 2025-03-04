@@ -12,7 +12,7 @@ import lombok.*;
 public class ScheduleAdded extends AbstractEvent {
 
     private Long associationId;
-    private Address place;
+    private String place;
     private Date schedule;
     private String title;
     private String category;

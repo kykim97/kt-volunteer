@@ -31,8 +31,8 @@ public class AssociationInfo  {
     
     
     
-    @Embedded
-    private Address address;
+    
+    private String address;
     
     
     
