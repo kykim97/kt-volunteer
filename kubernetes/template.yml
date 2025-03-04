@@ -43,46 +43,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: matching
-  labels:
-    app: matching
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: matching
-  template:
-    metadata:
-      labels:
-        app: matching
-    spec:
-      containers:
-        - name: matching
-          image: username/matching:latest
-          ports:
-            - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 10
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 10
-          livenessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 120
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 5
-
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: volunteering
   labels:
     app: volunteering
@@ -198,6 +158,46 @@ spec:
             periodSeconds: 5
             failureThreshold: 5
 
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: history
+  labels:
+    app: history
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: history
+  template:
+    metadata:
+      labels:
+        app: history
+    spec:
+      containers:
+        - name: history
+          image: username/history:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
 
 ---
 
@@ -214,23 +214,6 @@ spec:
       targetPort: 8080
   selector:
     app: volunteer
-
-
----
-
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: matching
-  labels:
-    app: matching
-spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
-  selector:
-    app: matching
 
 
 ---
@@ -282,4 +265,21 @@ spec:
       targetPort: 8080
   selector:
     app: mypage
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: history
+  labels:
+    app: history
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: history
 

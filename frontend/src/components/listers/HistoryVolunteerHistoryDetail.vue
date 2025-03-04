@@ -1,12 +1,12 @@
 <template>
     <v-card outlined>
         <v-card-title>
-            Volunteering # {{item._links.self.href.split("/")[item._links.self.href.split("/").length - 1]}}
+            VolunteerHistory # {{item._links.self.href.split("/")[item._links.self.href.split("/").length - 1]}}
         </v-card-title>
 
         <v-card-text>
             <div>
-                <Number label="VolunteeringId" v-model="item.volunteeringId" :editMode="editMode" @change="change" />
+                <Number label="HistoryId" v-model="item.historyId" :editMode="editMode" @change="change" />
             </div>
             <Address offline label="Place" v-model="item.place" :editMode="false" @change="change" />
             <div>
@@ -70,7 +70,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'VolunteeringVolunteeringDetail',
+        name: 'HistoryVolunteerHistoryDetail',
         components:{},
         props: {
         },
@@ -81,7 +81,7 @@
         async created() {
             var me = this;
             var params = this.$route.params;
-            var temp = await axios.get(axios.fixUrl('/volunteerings/' + params.id))
+            var temp = await axios.get(axios.fixUrl('/volunteerHistories/' + params.id))
             if(temp.data) {
                 me.item = temp.data
             }

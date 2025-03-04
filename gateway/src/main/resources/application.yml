@@ -13,22 +13,22 @@ spring:
           uri: http://localhost:8082
           predicates:
             - Path=/volunteerInfos/**, 
-        - id: matching
-          uri: http://localhost:8083
-          predicates:
-            - Path=/matchingInfos/**, /undefined/**, 
         - id: volunteering
-          uri: http://localhost:0
+          uri: http://localhost:8083
           predicates:
             - Path=/volunteerings/**, /checkApplicationHistories/**
         - id: association
-          uri: http://localhost:0
+          uri: http://localhost:8084
           predicates:
             - Path=/associationInfos/**, /checkSchedules/**
         - id: mypage
-          uri: http://localhost:0
+          uri: http://localhost:8085
           predicates:
             - Path=, /volunteerhistories/**
+        - id: history
+          uri: http://localhost:8086
+          predicates:
+            - Path=/volunteerHistories/**, 
         - id: frontend
           uri: http://localhost:8080
           predicates:
@@ -57,10 +57,6 @@ spring:
           uri: http://volunteer:8080
           predicates:
             - Path=/volunteerInfos/**, 
-        - id: matching
-          uri: http://matching:8080
-          predicates:
-            - Path=/matchingInfos/**, /undefined/**, 
         - id: volunteering
           uri: http://volunteering:8080
           predicates:
@@ -73,6 +69,10 @@ spring:
           uri: http://mypage:8080
           predicates:
             - Path=, 
+        - id: history
+          uri: http://history:8080
+          predicates:
+            - Path=/volunteerHistories/**, 
         - id: frontend
           uri: http://frontend:8080
           predicates:

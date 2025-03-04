@@ -46,29 +46,6 @@
 
                     <v-list-item
                         class="px-2"
-                        key="matchingInfos"
-                        to="/matchings/matchingInfos"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        매칭정보
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-
-                    <v-list-item
-                        class="px-2"
                         key="volunteerings"
                         to="/volunteerings/volunteerings"
                         @click="changeUrl()"
@@ -102,6 +79,18 @@
                     >
                         봉사활동이력
                     </v-list-item>
+                    <v-list-item
+                        class="px-2"
+                        key="volunteerHistories"
+                        to="/histories/volunteerHistories"
+                        @click="changeUrl()"
+                        color="primary"
+                        style="font-weight:700;"
+                    >
+                        봉사이력
+                    </v-list-item>
+
+
                 </v-list>
             </v-navigation-drawer>
         </div>
@@ -165,20 +154,6 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: '매칭정보', 
-                description: 'MatchingInfo을 관리하는 화면입니다.', 
-                key: 'matchingInfos', 
-                route: '/matchings/matchingInfos',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
                 title: '봉사활동', 
                 description: 'Volunteering을 관리하는 화면입니다.', 
                 key: 'volunteerings', 
@@ -190,6 +165,13 @@ export default {
                 description: 'AssociationInfo을 관리하는 화면입니다.', 
                 key: 'associationInfos', 
                 route: '/associations/associationInfos',
+                ImageUrl: '',
+            },
+            { 
+                title: '봉사이력', 
+                description: 'VolunteerHistory을 관리하는 화면입니다.', 
+                key: 'volunteerHistories', 
+                route: '/histories/volunteerHistories',
                 ImageUrl: '',
             },
             { 

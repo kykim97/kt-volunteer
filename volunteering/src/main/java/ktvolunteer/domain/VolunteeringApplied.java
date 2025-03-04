@@ -17,6 +17,7 @@ public class VolunteeringApplied extends AbstractEvent {
     private String title;
     private String category;
     private Integer personnel;
+    private Long userId;
 
     public VolunteeringApplied(Volunteering aggregate) {
         super(aggregate);

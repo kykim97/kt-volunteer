@@ -25,7 +25,7 @@
                         </v-fab-transition>
                     </template>
 
-                    <VolunteeringVolunteering :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <HistoryVolunteerHistory :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                         class="gs-close-btn"
@@ -44,12 +44,12 @@
 
 <script>
     const axios = require('axios').default;
-    import VolunteeringVolunteering from './../VolunteeringVolunteering.vue';
+    import HistoryVolunteerHistory from './../HistoryVolunteerHistory.vue';
 
     export default {
-        name: 'VolunteeringVolunteeringManager',
+        name: 'HistoryVolunteerHistoryManager',
         components: {
-            VolunteeringVolunteering,
+            HistoryVolunteerHistory,
         },
         props: {
             offline: Boolean,
@@ -60,7 +60,7 @@
             values: [],
             headers: 
                 [
-                    { text: "volunteeringId", value: "volunteeringId" },
+                    { text: "historyId", value: "historyId" },
                     { text: "place", value: "place" },
                     { text: "schedule", value: "schedule" },
                     { text: "title", value: "title" },
@@ -68,7 +68,7 @@
                     { text: "personnel", value: "personnel" },
                     { text: "userId", value: "userId" },
                 ],
-            volunteering : [],
+            volunteerHistory : [],
             newValue: {},
             tick : true,
             openDialog : false,
@@ -79,12 +79,12 @@
                 return;
             }
 
-            var temp = await axios.get(axios.fixUrl('/volunteerings'))
-            temp.data._embedded.volunteerings.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.volunteerings;
+            var temp = await axios.get(axios.fixUrl('/volunteerhistories'))
+            temp.data._embedded.volunteerhistories.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.volunteerhistories;
 
             this.newValue = {
-                'volunteeringId': 0,
+                'historyId': 0,
                 'place': {},
                 'schedule': '2025-03-04',
                 'title': '',

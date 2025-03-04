@@ -9,9 +9,9 @@ import lombok.*;
 //<<< DDD / Domain Event
 @Data
 @ToString
-public class VolunteeringEditted extends AbstractEvent {
+public class VolunteerHistoryAdded extends AbstractEvent {
 
-    private Long volunteeringId;
+    private Long historyId;
     private Address place;
     private Date schedule;
     private String title;
@@ -19,11 +19,11 @@ public class VolunteeringEditted extends AbstractEvent {
     private Integer personnel;
     private Long userId;
 
-    public VolunteeringEditted(Volunteering aggregate) {
+    public VolunteerHistoryAdded(VolunteerHistory aggregate) {
         super(aggregate);
     }
 
-    public VolunteeringEditted() {
+    public VolunteerHistoryAdded() {
         super();
     }
 }

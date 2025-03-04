@@ -9,14 +9,14 @@
         </template>
 
         <v-card-title v-if="value._links">
-            봉사활동 # {{decode(value._links.self.href.split("/")[value._links.self.href.split("/").length - 1])}}
+            봉사이력 # {{decode(value._links.self.href.split("/")[value._links.self.href.split("/").length - 1])}}
         </v-card-title >
         <v-card-title v-else>
-            봉사활동
+            봉사이력
         </v-card-title >        
 
         <v-card-text style="background-color: white;">
-            <Number v-if="editMode" label="VolunteeringId" v-model="value.volunteeringId" :editMode="editMode" :inputUI="''"/>
+            <Number v-if="editMode" label="HistoryId" v-model="value.historyId" :editMode="editMode" :inputUI="''"/>
             <Address offline label="위치" v-model="value.place" :editMode="editMode" @change="change"/>
             <Date label="일정" v-model="value.schedule" :editMode="editMode" :inputUI="''"/>
             <String label="제목" v-model="value.title" :editMode="editMode" :inputUI="''"/>
@@ -49,7 +49,7 @@
                     text
                     @click="save"
                 >
-                    봉사활동신청
+                저장
                 </v-btn>
                 <v-btn
                     color="primary"
@@ -63,48 +63,6 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-                v-if="!editMode"
-                color="primary"
-                text
-                @click="openEditVolunteering"
-            >
-                EditVolunteering
-            </v-btn>
-            <v-dialog v-model="editVolunteeringDiagram" width="500">
-                <EditVolunteeringCommand
-                    @closeDialog="closeEditVolunteering"
-                    @editVolunteering="editVolunteering"
-                ></EditVolunteeringCommand>
-            </v-dialog>
-            <v-btn
-                v-if="!editMode"
-                color="primary"
-                text
-                @click="openCancelVolunteering"
-            >
-                CancelVolunteering
-            </v-btn>
-            <v-dialog v-model="cancelVolunteeringDiagram" width="500">
-                <CancelVolunteeringCommand
-                    @closeDialog="closeCancelVolunteering"
-                    @cancelVolunteering="cancelVolunteering"
-                ></CancelVolunteeringCommand>
-            </v-dialog>
-            <v-btn
-                v-if="!editMode"
-                color="primary"
-                text
-                @click="openCompleteVolunteering"
-            >
-                CompleteVolunteering
-            </v-btn>
-            <v-dialog v-model="completeVolunteeringDiagram" width="500">
-                <CompleteVolunteeringCommand
-                    @closeDialog="closeCompleteVolunteering"
-                    @completeVolunteering="completeVolunteering"
-                ></CompleteVolunteeringCommand>
-            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -128,7 +86,7 @@
     import Address from './vo/Address.vue';
 
     export default {
-        name: 'VolunteeringVolunteering',
+        name: 'HistoryVolunteerHistory',
         components:{
             Address,
         },
@@ -144,9 +102,6 @@
                 timeout: 5000,
                 text: '',
             },
-            editVolunteeringDiagram: false,
-            cancelVolunteeringDiagram: false,
-            completeVolunteeringDiagram: false,
         }),
 	async created() {
         },
@@ -187,7 +142,7 @@
 
                     if(!this.offline) {
                         if(this.isNew) {
-                            temp = await axios.post(axios.fixUrl('/volunteerings'), this.value)
+                            temp = await axios.post(axios.fixUrl('/volunteerHistories'), this.value)
                         } else {
                             temp = await axios.put(axios.fixUrl(this.value._links.self.href), this.value)
                         }
@@ -243,78 +198,6 @@
             },
             change(){
                 this.$emit('input', this.value);
-            },
-            async editVolunteering(params) {
-                try {
-                    if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['editvolunteering'].href), params)
-                        for(var k in temp.data) {
-                            this.value[k]=temp.data[k];
-                        }
-                    }
-
-                    this.editMode = false;
-                    this.closeEditVolunteering();
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
-            },
-            openEditVolunteering() {
-                this.editVolunteeringDiagram = true;
-            },
-            closeEditVolunteering() {
-                this.editVolunteeringDiagram = false;
-            },
-            async cancelVolunteering() {
-                try {
-                    if(!this.offline) {
-                        await axios.delete(axios.fixUrl(this.value._links['cancelVolunteering'].href))
-                    }
-
-                    this.editMode = false;
-                    this.isDelete = true;
-                    
-                    this.$emit('input', this.value);
-                    this.$emit('delete', this.value);
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
-            },
-            async completeVolunteering(params) {
-                try {
-                    if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['completevolunteering'].href), params)
-                        for(var k in temp.data) {
-                            this.value[k]=temp.data[k];
-                        }
-                    }
-
-                    this.editMode = false;
-                    this.closeCompleteVolunteering();
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
-            },
-            openCompleteVolunteering() {
-                this.completeVolunteeringDiagram = true;
-            },
-            closeCompleteVolunteering() {
-                this.completeVolunteeringDiagram = false;
             },
         },
     }

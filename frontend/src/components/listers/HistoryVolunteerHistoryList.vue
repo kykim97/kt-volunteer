@@ -1,6 +1,6 @@
 <template>
     <div>
-    <h1>봉사활동</h1>
+    <h1>봉사이력</h1>
         <v-row>
             <v-card
                 class="mx-auto"
@@ -26,7 +26,7 @@
                         color="primary"
                         style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                     >
-                        봉사활동 등록
+                        봉사이력 등록
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -50,7 +50,7 @@
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
-                            [ VolunteeringId :  {{data.volunteeringId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ HistoryId :  {{data.historyId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Place :  {{data.place }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Schedule :  {{data.schedule }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Title :  {{data.title }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -69,7 +69,7 @@
         <v-col style="margin-bottom:40px;">
             <div class="text-center">
                 <v-dialog v-model="openDialog" width="500">
-                    <VolunteeringVolunteering :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <HistoryVolunteerHistory :offline="offline"  :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                     <v-btn
                         class="gs-close-btn"
                         @click="closeDialog()"
@@ -87,12 +87,12 @@
 
 <script>
     const axios = require('axios').default;
-    import VolunteeringVolunteering from './../VolunteeringVolunteering.vue';
+    import HistoryVolunteerHistory from './../HistoryVolunteerHistory.vue';
 
     export default {
-        name: 'VolunteeringVolunteeringManager',
+        name: 'HistoryVolunteerHistoryManager',
         components: {
-            VolunteeringVolunteering,
+            HistoryVolunteerHistory,
         },
         props: {
             offline: Boolean,
@@ -111,12 +111,12 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/volunteerings'))
-            temp.data._embedded.volunteerings.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.volunteerings;
+            var temp = await axios.get(axios.fixUrl('/volunteerhistories'))
+            temp.data._embedded.volunteerhistories.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.volunteerhistories;
             
             this.newValue = {
-                'volunteeringId': 0,
+                'historyId': 0,
                 'place': {},
                 'schedule': '2025-03-04',
                 'title': '',
