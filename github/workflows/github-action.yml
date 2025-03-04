@@ -30,10 +30,10 @@ jobs:
       - name: Build Maven Projects
         run: |
           mvn clean package -f ./volunteer/pom.xml
-          mvn clean package -f ./matching/pom.xml
           mvn clean package -f ./volunteering/pom.xml
           mvn clean package -f ./association/pom.xml
           mvn clean package -f ./mypage/pom.xml
+          mvn clean package -f ./history/pom.xml
 
       - name: Docker Build and push for Volunteer
         uses: docker/build-push-action@v4
@@ -44,16 +44,6 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}/volunteer:latest
             ghcr.io/${{ github.repository }}/volunteer:${{ github.ref_name }}
-            
-      - name: Docker Build and push for Matching
-        uses: docker/build-push-action@v4
-        with:
-          context: ./matching
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ghcr.io/${{ github.repository }}/matching:latest
-            ghcr.io/${{ github.repository }}/matching:${{ github.ref_name }}
             
       - name: Docker Build and push for Volunteering
         uses: docker/build-push-action@v4
@@ -84,4 +74,14 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}/mypage:latest
             ghcr.io/${{ github.repository }}/mypage:${{ github.ref_name }}
+            
+      - name: Docker Build and push for History
+        uses: docker/build-push-action@v4
+        with:
+          context: ./history
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/history:latest
+            ghcr.io/${{ github.repository }}/history:${{ github.ref_name }}
             

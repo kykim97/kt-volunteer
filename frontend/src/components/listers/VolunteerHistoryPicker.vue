@@ -15,7 +15,7 @@
                             <v-list-item-title>
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                VolunteeringId :  {{item.volunteeringId }}
+                                HistoryId :  {{item.historyId }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
                                 Place :  {{item.place }}
@@ -52,7 +52,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'VolunteeringVolunteeringPicker',
+        name: 'HistoryVolunteerHistoryPicker',
         props: {
             value: [String, Object, Array, Number, Boolean],
         },
@@ -62,14 +62,14 @@
         }),
         async created() {
             var me = this;
-            var temp = await axios.get(axios.fixUrl('/volunteerings'))
+            var temp = await axios.get(axios.fixUrl('/volunteerHistories'))
             if(temp.data) {
-                me.list = temp.data._embedded.volunteerings;
+                me.list = temp.data._embedded.volunteerHistories;
             }
 
             if(me.value && typeof me.value == "object" && Object.values(me.value)[0]) {
                 var id = Object.values(me.value)[0];
-                var tmpValue = await axios.get(axios.fixUrl('/volunteerings/' + id))
+                var tmpValue = await axios.get(axios.fixUrl('/volunteerHistories/' + id))
                 if(tmpValue.data) {
                     var val = tmpValue.data
                     me.list.forEach(function(item, idx) {
@@ -85,7 +85,7 @@
                 var obj = {}
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
-                    obj['volunteeringId'] = arr[4]; 
+                    obj['historyId'] = arr[4]; 
                     
                     
                     

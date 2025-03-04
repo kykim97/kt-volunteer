@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: association
+    name: history
 ---
 
 spring:
@@ -29,7 +29,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: association
+          group: history
 #<<< EDA / Topic Name
           destination: ktvolunteer
 #>>> EDA / Topic Name
@@ -45,13 +45,9 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
-api:
-  url: 
-    undefined: localhost:undefined 
-    
 
 server:
-  port: 8084
+  port: 8086
 
 ---
 
@@ -78,15 +74,11 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: association
+          group: history
           destination: ktvolunteer
           contentType: application/json
         event-out:
           destination: ktvolunteer
           contentType: application/json
 
-api:
-  url: 
-    undefined: undefined:8080 
-    
 

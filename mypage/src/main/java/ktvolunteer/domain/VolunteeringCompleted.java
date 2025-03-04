@@ -14,4 +14,5 @@ public class VolunteeringCompleted extends AbstractEvent {
     private String title;
     private String category;
     private Integer personnel;
+    private Long userId;
 }

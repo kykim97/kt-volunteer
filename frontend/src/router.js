@@ -8,11 +8,6 @@ Vue.use(Router);
 import VolunteerVolunteerInfoManager from "./components/listers/VolunteerVolunteerInfoCards"
 import VolunteerVolunteerInfoDetail from "./components/listers/VolunteerVolunteerInfoDetail"
 
-import MatchingMatchingInfoManager from "./components/listers/MatchingMatchingInfoCards"
-import MatchingMatchingInfoDetail from "./components/listers/MatchingMatchingInfoDetail"
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
-
 import VolunteeringVolunteeringManager from "./components/listers/VolunteeringVolunteeringCards"
 import VolunteeringVolunteeringDetail from "./components/listers/VolunteeringVolunteeringDetail"
 
@@ -26,6 +21,9 @@ import CheckScheduleViewDetail from "./components/CheckScheduleViewDetail"
 
 import VolunteerhistoryView from "./components/VolunteerhistoryView"
 import VolunteerhistoryViewDetail from "./components/VolunteerhistoryViewDetail"
+import HistoryVolunteerHistoryManager from "./components/listers/HistoryVolunteerHistoryCards"
+import HistoryVolunteerHistoryDetail from "./components/listers/HistoryVolunteerHistoryDetail"
+
 
 export default new Router({
     // mode: 'history',
@@ -40,27 +38,6 @@ export default new Router({
                 path: '/volunteers/volunteerInfos/:id',
                 name: 'VolunteerVolunteerInfoDetail',
                 component: VolunteerVolunteerInfoDetail
-            },
-
-            {
-                path: '/matchings/matchingInfos',
-                name: 'MatchingMatchingInfoManager',
-                component: MatchingMatchingInfoManager
-            },
-            {
-                path: '/matchings/matchingInfos/:id',
-                name: 'MatchingMatchingInfoDetail',
-                component: MatchingMatchingInfoDetail
-            },
-            {
-                path: '//',
-                name: 'Manager',
-                component: Manager
-            },
-            {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
             },
 
             {
@@ -116,6 +93,17 @@ export default new Router({
                 name: 'VolunteerhistoryViewDetail',
                 component: VolunteerhistoryViewDetail
             },
+            {
+                path: '/histories/volunteerHistories',
+                name: 'HistoryVolunteerHistoryManager',
+                component: HistoryVolunteerHistoryManager
+            },
+            {
+                path: '/histories/volunteerHistories/:id',
+                name: 'HistoryVolunteerHistoryDetail',
+                component: HistoryVolunteerHistoryDetail
+            },
+
 
 
     ]

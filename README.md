@@ -21,10 +21,10 @@ cd /bin
 See the README.md files inside the each microservices directory:
 
 - volunteer
-- matching
 - volunteering
 - association
 - mypage
+- history
 
 
 ## Run API Gateway (Spring Gateway)
@@ -38,14 +38,9 @@ mvn spring-boot:run
 ```
  http :8088/volunteerInfos userId="userId"name="name"birth="birth"tel="tel"interest="interest"time="time"
 ```
-- matching
-```
- http :8088/matchingInfos matchingId="matchingId"userId="userId"associationId="associationId"category="category"
- http :8088/ 
-```
 - volunteering
 ```
- http :8088/volunteerings volunteeringId="volunteeringId"schedule="schedule"title="title"category="category"personnel="personnel"
+ http :8088/volunteerings volunteeringId="volunteeringId"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
 ```
 - association
 ```
@@ -53,6 +48,10 @@ mvn spring-boot:run
 ```
 - mypage
 ```
+```
+- history
+```
+ http :8088/volunteerHistories historyId="historyId"schedule="schedule"title="title"category="category"personnel="personnel"userId="userId"
 ```
 
 
